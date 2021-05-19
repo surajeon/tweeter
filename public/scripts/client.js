@@ -7,34 +7,53 @@
 $(document).ready(function () {
   $("#tweeted-since").html(timeago.format(new Date()));
 
-  const $tweet = $(`<article class="tweet">Hello world</article>`);
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    }
-  ]
+  $("#create-tweet-form").submit((event) => {
+    event.preventDefault();
+    const $form = $(this);
+    const $input = $form.find("textarea");
+    const formData = $input.serialize()
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: formData,
+    })
+    .then(() => {
+      loadTweets()
+    })
+    .catch(err => {
+      console.log("ajax error caught");
+      console.log(err);
+    });
 
-  
+  });
+
+  const loadTweets = () => {
+    $.ajax({
+      method: "GET",
+      url: "/tweets"
+    })    
+    .then((result) => {
+      $(".article-wrapper").empty();
+      renderTweets(result);
+      console.log("result", result);
+    })
+    .catch(err => {
+      console.log("ajax error caught");
+    });
+  }  
+
+  const renderTweets = function (tweets) {
+    const tweetElms = tweets.map(createTweetElement);
+    $(".article-wrapper").append(tweetElms);
+
+    // let tweet = $.each(tweets, function(index, value) {
+    //   value = createTweetElement(tweets[index])
+    //   $(".article-wrapper").append(value);        
+    //   // console.log(value); // each tweet html
+    // });
+    // return tweet;
+  }
+
   const createTweetElement = function (tweet) {
     const $tweet = $(`
     <article class="tweet-container">
@@ -58,32 +77,19 @@ $(document).ready(function () {
 
     return $tweet;
   }
-  
-  const renderTweets = function (tweets) {
-    const tweetElms = tweets.map(createTweetElement);
-    $(".article-wrapper").append(tweetElms);
+    // let timeline = $("#tweeted-since").html(timeago.format(new Date()));
 
-    // let tweet = $.each(tweets, function(index, value) {
-    //   value = createTweetElement(tweets[index])
-    //   $(".article-wrapper").append(value);        
-    //   // console.log(value); // each tweet html
-    // });
-    // return tweet;
-  }
-
-  renderTweets(data);
-
-  $("#create-tweet-form").submit((event) => {
-    event.preventDefault();
-    const $form = $(this);
-    const $input = $form.find("textarea");
-    const formData = $input.serialize()
-    $.ajax({
-      type: "POST",
-      url: "http://localhost:8080/tweets",
-      data: formData,
-    })
-  });
-
+  // $(function() {
+  //   const $button = $('#load-more-posts');
+  //   $button.on('click', function () {
+  //     console.log('Button clicked, performing ajax call...');
+  //     $.ajax('more-posts.html', { method: 'GET' })
+  //     .then(function (morePostsHtml) {
+  //       console.log('Success: ', morePostsHtml);
+  //       $button.replaceWith(morePostsHtml);
+  //     });
+  //   });
+  // });
+  loadTweets()
 });
 
