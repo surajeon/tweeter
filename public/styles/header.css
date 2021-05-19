@@ -1,0 +1,26 @@
+.main-header {
+  /* border: 1px solid red; */
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 150px;
+  background-color: rgb(169, 184, 216);
+  background-image: url('/styles/images/asfalt-light.png');
+}
+
+.profile-img, .profile-name {
+  /* position: relative; */ /* z-index prior to nav */
+  /* border: 1px solid red; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-name h2 {
+  margin-top: 0px;
+}
+
+/* img {
+  border: 1px solid red;
+
+} */
