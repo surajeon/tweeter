@@ -55,7 +55,7 @@ $(document).ready(function () {
     </footer>
     </article>
     `)
-    /* Your code for creating the tweet element */
+
     return $tweet;
   }
   
@@ -63,20 +63,27 @@ $(document).ready(function () {
     const tweetElms = tweets.map(createTweetElement);
     $(".article-wrapper").append(tweetElms);
 
-
     // let tweet = $.each(tweets, function(index, value) {
     //   value = createTweetElement(tweets[index])
     //   $(".article-wrapper").append(value);        
     //   // console.log(value); // each tweet html
     // });
     // return tweet;
-    
-    // loops through tweets
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
   }
 
   renderTweets(data);
+
+  $("#create-tweet-form").submit((event) => {
+    event.preventDefault();
+    const $form = $(this);
+    const $input = $form.find("textarea");
+    const formData = $input.serialize()
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8080/tweets",
+      data: formData,
+    })
+  });
 
 });
 
