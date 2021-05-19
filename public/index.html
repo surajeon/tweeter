@@ -50,12 +50,12 @@
     </div>
   </header>
   <main class="container">
-    <!-- creating new tweet section -->
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
       <form action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
-        <textarea class="tweet-textarea" name="text" id="tweet-textarea-counter"></textarea> <!--class,id-->
+        <textarea class="tweet-textarea" name="text" id="tweet-textarea-counter"></textarea>
+        <!--class,id-->
         <div class="btn-counter">
           <button id="tweet-button" type="submit">Tweet</button>
           <output id="text-count" name="counter" class="counter" for="tweet-text">
@@ -65,23 +65,25 @@
       </form>
     </section>
     <!-- tweet container -->
-    <article class="tweet">
-      <header>
-        <img src="/images/profile-hex.png">
-        <span>@UserID</span>
-      </header>
-      <div class="tweeted-text">
-        <p>Hello World!</p>
-      </div>
-      <footer class="tweet-footer">
-        <span id="tweeted-since" class="tweeted-since-posted">10 days ago</span>
-        <ul class="footer-icons">
-          <li><a href="#"><i class="fas fa-flag"></i></a></li>
-          <li><a href="#"><i class="fas fa-retweet"></i></a></li>
-          <li><a href="#"><i class="fas fa-heart"></i></a></li>
-        </ul>
-      </footer>
-    </article>
+    <div class="article-wrapper">
+      <!-- <article class="tweet-container">
+        <header>
+          <img src="/images/profile-hex.png">
+          <span>@UserID</span>
+        </header>
+        <div class="tweeted-text">
+          <p>Hello World!</p>
+        </div>
+        <footer class="tweet-footer">
+          <span id="tweeted-since" class="tweeted-since-posted"></span>
+          <ul class="footer-icons">
+            <li><a href="#"><i class="fas fa-flag"></i></a></li>
+            <li><a href="#"><i class="fas fa-retweet"></i></a></li>
+            <li><a href="#"><i class="fas fa-heart"></i></a></li>
+          </ul>
+        </footer>
+      </article> -->
+    </div>
     <!--  -->
   </main>
 </body>
