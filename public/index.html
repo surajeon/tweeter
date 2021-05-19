@@ -52,7 +52,7 @@
   <main class="container">
     <section class="new-tweet">
       <h2>Compose Tweet</h2>
-      <form action="/tweets/" method="POST">
+      <form id="create-tweet-form" action="/tweets/" method="POST">
         <label for="tweet-text">What are you humming about?</label>
         <textarea class="tweet-textarea" name="text" id="tweet-textarea-counter"></textarea>
         <!--class,id-->
@@ -65,7 +65,7 @@
       </form>
     </section>
     <!-- tweet container -->
-    <div class="article-wrapper">
+    <section class="article-wrapper">
       <!-- <article class="tweet-container">
         <header>
           <img src="/images/profile-hex.png">
@@ -83,7 +83,7 @@
           </ul>
         </footer>
       </article> -->
-    </div>
+    </section>
     <!--  -->
   </main>
 </body>
