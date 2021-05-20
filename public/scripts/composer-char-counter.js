@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   var maxLength = 140;
-  $("#tweet-textarea-counter").keyup(function() {
+  $("#tweet-textarea-counter").on("input",(function() { //no keyup
     var initialLength = $(this).val().length;
     var textLength = maxLength-initialLength;
     $('#remaining-chars').text(textLength); 
@@ -20,7 +20,7 @@ $(document).ready(function () {
     // } else {
     //   $('#remaining-chars').css("color", "black");
     // }
-  });
+  }));
   // $(document).ready(function() {
   //   $("#tweet-textarea").keyup(function() {    
   //     let characterCount = $(this).val().length,

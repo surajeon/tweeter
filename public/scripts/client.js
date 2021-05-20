@@ -4,43 +4,53 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// if ($input === "" || $input === null) {
+
+// }
+
 $(document).ready(function () {
-  $("#tweeted-since").html(timeago.format(new Date()));
 
   $("#create-tweet-form").submit((event) => {
     event.preventDefault();
     const $form = $(this);
     const $input = $form.find("textarea");
     const formData = $input.serialize()
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: formData,
-    })
-    .then(() => {
-      loadTweets()
-    })
-    .catch(err => {
-      console.log("ajax error caught");
-      console.log(err);
-    });
 
+    if ($input.val().length === 0) {
+      alert("You need to input some text");
+    } else if ($input.val().length > 140) {
+      alert("Your text has to be less than 140");
+    } else {
+      $.ajax({
+        type: "POST",
+        url: "/tweets",
+        data: formData,
+      })
+        .then(() => {
+          loadTweets();
+          $input.val("");
+        })
+        .catch(err => {
+          console.log("ajax error caught");
+          console.log(err);
+        });
+    }
   });
 
   const loadTweets = () => {
     $.ajax({
       method: "GET",
       url: "/tweets"
-    })    
-    .then((result) => {
-      $(".article-wrapper").empty();
-      renderTweets(result);
-      console.log("result", result);
     })
-    .catch(err => {
-      console.log("ajax error caught");
-    });
-  }  
+      .then((result) => {
+        $(".article-wrapper").empty(); // empty works on DOM elms
+        renderTweets(result);
+        console.log("result", result);
+      })
+      .catch(err => {
+        console.log("ajax error caught");
+      });
+  }
 
   const renderTweets = function (tweets) {
     const tweetElms = tweets.map(createTweetElement);
@@ -55,6 +65,8 @@ $(document).ready(function () {
   }
 
   const createTweetElement = function (tweet) {
+    // $("#tweeted-since").html(timeago.format(new Date()));
+    const timeline = timeago.format(tweet['created_at']);
     const $tweet = $(`
     <article class="tweet-container">
     <header class = "tweet-header">
@@ -65,7 +77,7 @@ $(document).ready(function () {
     <p>${tweet.content.text}</p>
     </div>
     <footer class="tweet-footer">
-    <span id="tweeted-since" class="tweeted-since-posted">${tweet.created_at}</span>
+    <span id="tweeted-since" class="tweeted-since-posted">${timeline}</span>
     <ul class="footer-icons">
     <li><a href="#"><i class="fas fa-flag"></i></a></li>
     <li><a href="#"><i class="fas fa-retweet"></i></a></li>
@@ -74,10 +86,9 @@ $(document).ready(function () {
     </footer>
     </article>
     `)
-
     return $tweet;
   }
-    // let timeline = $("#tweeted-since").html(timeago.format(new Date()));
+  // let timeline = $("#tweeted-since").html(timeago.format(new Date()));
 
   // $(function() {
   //   const $button = $('#load-more-posts');
