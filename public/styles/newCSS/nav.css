@@ -24,6 +24,17 @@ nav {
 }
 
 #double-arrow-icon {
-  /* border: 1px solid red; */
   color: red;
+  animation: ArrowAnimation 1s linear infinite;
+  position: absolute;
+  /* bottom: -8px; */
+}
+
+@keyframes ArrowAnimation {
+  0%, 100% {
+    bottom: -8px;
+  }
+  50% {
+    bottom: -18px;
+  }
 }

@@ -60,7 +60,7 @@ article.tweet-container {
   /* height: 200px; */
 }
 
-article.tweet:hover {
+article.tweet-container:hover {
   box-shadow: 10px 8px 1px grey;
 }
 
@@ -78,6 +78,12 @@ article img {
 .tweeted-text {
   color: rgb(42, 29, 126);
   border-bottom: 4px solid #545149;
+}
+
+.valid-error-message {
+  color: red;
+  font-size: 1rem;
+  margin-top: 12px;
 }
 
 article footer {

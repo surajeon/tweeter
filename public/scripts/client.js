@@ -10,17 +10,18 @@
 
 $(document).ready(function () {
 
-  $("#create-tweet-form").submit((event) => {
+  $("#create-tweet-form").on("submit",((event) => {
     event.preventDefault();
     const $form = $(this);
     const $input = $form.find("textarea");
     const formData = $input.serialize()
 
     if ($input.val().length === 0) {
-      alert("You need to input some text");
+      $('.valid-error-message').text("This field cannot be empty.");
     } else if ($input.val().length > 140) {
-      alert("Your text has to be less than 140");
+      $('.valid-error-message').text("You have reached the maximum number of characters.");
     } else {
+      $('.valid-error-message').empty();
       $.ajax({
         type: "POST",
         url: "/tweets",
@@ -35,7 +36,7 @@ $(document).ready(function () {
           console.log(err);
         });
     }
-  });
+  }));
 
   const loadTweets = () => {
     $.ajax({
@@ -56,6 +57,9 @@ $(document).ready(function () {
     const tweetElms = tweets.reverse().map(createTweetElement);
     $(".article-wrapper").append(tweetElms);
 
+    // tweets.forEach((tweet) => {
+    //   const $tweet = createTweetElement(tweet);
+    //   $(‘#tweets-container’).prepend($tweet); })
 
     // for(let tweet = tweets.length; tweet = 0; tweet--)
 
@@ -67,6 +71,12 @@ $(document).ready(function () {
     // return tweet;
   }
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+  
   const createTweetElement = function (tweet) {
     // $("#tweeted-since").html(timeago.format(new Date()));
     const timeline = timeago.format(tweet['created_at']);
@@ -77,7 +87,7 @@ $(document).ready(function () {
     <span>${tweet.user.handle}</span>
     </header>
     <div class="tweeted-text">
-    <p>${tweet.content.text}</p>
+    <p>${escape(tweet.content.text)}</p>
     </div>
     <footer class="tweet-footer">
     <span id="tweeted-since" class="tweeted-since-posted">${timeline}</span>
@@ -91,6 +101,7 @@ $(document).ready(function () {
     `)
     return $tweet;
   }
+
   // let timeline = $("#tweeted-since").html(timeago.format(new Date()));
 
   // $(function() {
