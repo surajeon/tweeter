@@ -53,8 +53,11 @@ $(document).ready(function () {
   }
 
   const renderTweets = function (tweets) {
-    const tweetElms = tweets.map(createTweetElement);
+    const tweetElms = tweets.reverse().map(createTweetElement);
     $(".article-wrapper").append(tweetElms);
+
+
+    // for(let tweet = tweets.length; tweet = 0; tweet--)
 
     // let tweet = $.each(tweets, function(index, value) {
     //   value = createTweetElement(tweets[index])
