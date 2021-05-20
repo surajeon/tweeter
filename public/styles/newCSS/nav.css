@@ -26,7 +26,7 @@ nav {
 #double-arrow-icon {
   color: red;
   animation: ArrowAnimation 1s linear infinite;
-  position: absolute;
+  position: relative;
   /* bottom: -8px; */
 }
 
@@ -38,3 +38,4 @@ nav {
     bottom: -18px;
   }
 }
+
