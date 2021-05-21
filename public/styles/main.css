@@ -1,11 +1,11 @@
+/*---------- ENTIRE TWEET CONTAINER ----------*/
+
 .tweet-main-container {
-  /* border: 1px solid red; */
   margin: 0 auto;
   width: 90%;
-  /* height: 1000px; */
 }
 
-/* NEW TWEET FORM */
+/*---------- NEW TWEET FORM ----------*/
 
 #create-tweet-form{
   position: relative;
@@ -54,9 +54,7 @@
   padding: 4px 8px;
 }
 
-.valid-error-message {
-  /* opacity: 0;
-  height: 0; */
+.valid-error-message {  /* space for error message */
   display: none;
 }
 
@@ -65,7 +63,8 @@
   font-family: 'Bungee', cursive;
 }
 
-/* LOADED TWEETS */
+
+/*---------- LOADED TWEETS ----------*/
 
 article.tweet-container {
   position: relative;
@@ -85,9 +84,23 @@ article.tweet-container header {
   justify-content: space-between;
 }
 
+article .avatar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 article img {
-  height: 64px;
-  width: 64px;
+  height: 40px;
+  width: 40px;
+  border-radius: 40%;
+  background: white;
+  padding: 8px;
+}
+
+article .tweet-user-name {
+  font-size: 20px;
+  margin-left: 12px;
 }
 
 .tweeted-content {

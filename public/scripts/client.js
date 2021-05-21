@@ -5,20 +5,21 @@
  */
 
 
-$(document).ready(function () {
+$(document).ready(function() {
 
-  // event handler for submitting new tweet
-  $("#create-tweet-form").on("submit",((event) => {
+  // Event handler for submitting new tweet
+
+  $("#create-tweet-form").on("submit", ((event) => {
     event.preventDefault();
     const $form = $(this);
     const $input = $form.find("textarea");
-    const formData = $input.serialize()
+    const formData = $input.serialize();
 
     if ($input.val().length === 0) {
-      $('.valid-error-message').text("This field cannot be empty.").slideDown(1000).delay(2500).fadeOut(1); // slideDown
+      $('.valid-error-message').text("This field cannot be empty.").slideDown(200).delay(2500).fadeOut(100); // slideDown
       console.log("here");
     } else if ($input.val().length > 140) {
-      $('.valid-error-message').text("You have reached the maximum number of characters.").slideDown(1000).delay(2500).fadeOut(1);
+      $('.valid-error-message').text("You have reached the maximum number of characters.").slideDown(200).delay(2500).fadeOut(100);
     } else {
       $('.valid-error-message').empty();
       $.ajax({
@@ -37,10 +38,11 @@ $(document).ready(function () {
     }
   }));
 
+  // When you click rew arrows on nav, toggles new tweet form.
+
   $("#nav-new-tweet").click(function() {
     $(".new-tweet #create-tweet-form").toggleClass("active");
-  })     
-
+  });
 
   const loadTweets = () => {
     $.ajax({
@@ -55,9 +57,11 @@ $(document).ready(function () {
       .catch(err => {
         console.log("ajax error caught");
       });
-  }
+  };
 
-  const renderTweets = function (tweets) {
+  // Render all tweets in order of most recent
+
+  const renderTweets = function(tweets) {
     const tweetElms = tweets.reverse().map(createTweetElement);
     $(".article-wrapper").append(tweetElms);
 
@@ -69,25 +73,29 @@ $(document).ready(function () {
 
     // let tweet = $.each(tweets, function(index, value) {
     //   value = createTweetElement(tweets[index])
-    //   $(".article-wrapper").append(value);        
+    //   $(".article-wrapper").append(value);
     //   // console.log(value); // each tweet html
     // });
     // return tweet;
-  }
+  };
 
-  const escape = function (str) {
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-  
-  const createTweetElement = function (tweet) {
-    // $("#tweeted-since").html(timeago.format(new Date()));
+
+  // function to create new tweet
+
+  const createTweetElement = function(tweet) {
     const timeline = timeago.format(tweet['created_at']);
     const $tweet = $(`
     <article class="tweet-container">
       <header class="tweet-header">
-        <img src="/images/profile-hex.png">
+        <div class="avatar">
+          <img class="avatar-size" src="${tweet.user.avatars}" alt="avatar" />
+          <span class="tweet-user-name">${tweet.user.name}</span>
+        </div>
         <span>${tweet.user.handle}</span>
       </header>
       <div class="tweeted-content">
@@ -102,9 +110,9 @@ $(document).ready(function () {
         </ul>
       </footer>
     </article>    
-    `)
+    `);
     return $tweet;
-  }
+  };
 
   // let timeline = $("#tweeted-since").html(timeago.format(new Date()));
 
@@ -119,6 +127,6 @@ $(document).ready(function () {
   //     });
   //   });
   // });
-  loadTweets()
+  loadTweets();
 });
 
