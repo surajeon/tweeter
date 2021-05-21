@@ -1,9 +1,9 @@
 .main-header {
   /* border: 1px solid red; */
-  height: 520px;
+  height: 480px;
   display: flex;
   flex-direction: column;
-  padding-top: 150px;
+  padding-top: 120px;
   background-color: rgb(169, 184, 216);
   background-image: url('/styles/images/asfalt-light.png');
 }

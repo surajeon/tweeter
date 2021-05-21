@@ -1,9 +1,10 @@
 nav {
-  /* border: 1px solid red; */
-  font-family: 'Bungee', cursive; /* should apply to the logo in the nav*/
-  height: 120px;
-  background-color: #4056A1;
-  color: #FFFFFF;
+  background-color: rgb(169, 184, 216);
+  background-image: url('/styles/images/asfalt-light.png');
+  font-family: 'Bungee', cursive;
+  height: 80px;
+  /* background-color: #4056A1; */
+  color: #4056A1; 
   padding-left: 1.5em;
   padding-right: 1.5em;
   display: flex;
@@ -16,7 +17,7 @@ nav {
 
 .nav-new-tweet {
   /* border: 1px solid red; */
-
+  transform: scale(.7);
   display: flex;
   font-family: 'Source Sans Pro', sans-serif;
   flex-direction: column;

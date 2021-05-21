@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;  
-  margin: 0 12px;
+  padding: 36px 12px;
 }
 
 #tweet-textarea-counter {
@@ -75,7 +75,8 @@ article img {
   width: 64px;
 }
 
-.tweeted-text {
+.tweeted-content {
+  word-break: break-all;
   color: rgb(42, 29, 126);
   border-bottom: 4px solid #545149;
 }
