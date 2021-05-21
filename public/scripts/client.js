@@ -17,9 +17,10 @@ $(document).ready(function () {
     const formData = $input.serialize()
 
     if ($input.val().length === 0) {
-      $('.valid-error-message').text("This field cannot be empty.");
+      $('.valid-error-message').text("This field cannot be empty.").slideDown(1000).delay(2500).fadeOut(1); // slideDown
+      console.log("here");
     } else if ($input.val().length > 140) {
-      $('.valid-error-message').text("You have reached the maximum number of characters.");
+      $('.valid-error-message').text("You have reached the maximum number of characters.").slideDown(1000).delay(2500).fadeOut(1);
     } else {
       $('.valid-error-message').empty();
       $.ajax({
@@ -82,22 +83,22 @@ $(document).ready(function () {
     const timeline = timeago.format(tweet['created_at']);
     const $tweet = $(`
     <article class="tweet-container">
-    <header class = "tweet-header">
-    <img src="/images/profile-hex.png">
-    <span>${tweet.user.handle}</span>
-    </header>
-    <div class="tweeted-text">
-    <p>${escape(tweet.content.text)}</p>
-    </div>
-    <footer class="tweet-footer">
-    <span id="tweeted-since" class="tweeted-since-posted">${timeline}</span>
-    <ul class="footer-icons">
-    <li><a href="#"><i class="fas fa-flag"></i></a></li>
-    <li><a href="#"><i class="fas fa-retweet"></i></a></li>
-    <li><a href="#"><i class="fas fa-heart"></i></a></li>
-    </ul>
-    </footer>
-    </article>
+      <header class="tweet-header">
+        <img src="/images/profile-hex.png">
+        <span>${tweet.user.handle}</span>
+      </header>
+      <div class="tweeted-content">
+        <p>${escape(tweet.content.text)}</p>
+      </div>
+      <footer class="tweet-footer">
+        <span id="tweeted-since" class="tweeted-since-posted">${timeline}</span>
+        <ul class="footer-icons">
+          <li><a href="#"><i class="fas fa-flag"></i></a></li>
+          <li><a href="#"><i class="fas fa-retweet"></i></a></li>
+          <li><a href="#"><i class="fas fa-heart"></i></a></li>
+        </ul>
+      </footer>
+    </article>    
     `)
     return $tweet;
   }
