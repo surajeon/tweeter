@@ -3,9 +3,11 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+
 html {
   box-sizing: border-box;
 }
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -14,15 +16,16 @@ html {
  * Global layout stuff
  */
 
- * {
+* {
   box-sizing: border-box;
- }
+}
+
 body {
-  /* border: 1px solid red; */
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
-  font-family: 'Bungee', cursive; /* should apply to the logo in the nav*/
+  font-family: 'Bungee', cursive;
+  /* should apply to the logo in the nav*/
   font-family: 'Source Sans Pro', sans-serif
 }
 

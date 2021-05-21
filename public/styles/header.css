@@ -1,5 +1,4 @@
 .main-header {
-  /* border: 1px solid red; */
   height: 480px;
   display: flex;
   flex-direction: column;
@@ -9,8 +8,6 @@
 }
 
 .profile-img, .profile-name {
-  /* position: relative; */ /* z-index prior to nav */
-  /* border: 1px solid red; */
   position: relative;
   display: flex;
   justify-content: center;
@@ -19,8 +16,3 @@
 .profile-name h2 {
   margin-top: 0px;
 }
-
-/* img {
-  border: 1px solid red;
-
-} */

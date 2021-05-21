@@ -3,7 +3,6 @@ nav {
   background-image: url('/styles/images/asfalt-light.png');
   font-family: 'Bungee', cursive;
   height: 80px;
-  /* background-color: #4056A1; */
   color: #4056A1; 
   padding-left: 1.5em;
   padding-right: 1.5em;
@@ -16,7 +15,6 @@ nav {
 }
 
 .nav-new-tweet {
-  /* border: 1px solid red; */
   transform: scale(.7);
   display: flex;
   font-family: 'Source Sans Pro', sans-serif;
@@ -28,7 +26,6 @@ nav {
   color: red;
   animation: ArrowAnimation 1s linear infinite;
   position: relative;
-  /* bottom: -8px; */
 }
 
 @keyframes ArrowAnimation {
