@@ -5,6 +5,8 @@
   padding-top: 120px;
   background-color: rgb(169, 184, 216);
   background-image: url('/styles/images/asfalt-light.png');
+  position: relative;
+  z-index: 2;
 }
 
 .profile-img, .profile-name {

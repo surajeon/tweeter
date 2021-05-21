@@ -9,23 +9,24 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  z-index: 1;
+  z-index: 3;
   position: fixed;
   width: 100vw;
 }
 
 .nav-new-tweet {
-  transform: scale(.7);
-  display: flex;
+  font-size: 16px;
   font-family: 'Source Sans Pro', sans-serif;
-  flex-direction: column;
-  align-items: center;
+  text-decoration: none;
+  color: #FFFFFF;
 }
 
 #double-arrow-icon {
   color: red;
   animation: ArrowAnimation 1s linear infinite;
   position: relative;
+  display: block;
+  text-align: center;
 }
 
 @keyframes ArrowAnimation {

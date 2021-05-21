@@ -18,9 +18,9 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/newCSS/nav.css" typw="text/css" />
   <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/new-tweet.css" />
+  <link rel="stylesheet" href="/styles/newCSS/nav.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/media.css" type="text/css" />
 
 
   <!-- External JS -->
@@ -35,41 +35,45 @@
 <body>
   <!-- Top nav bar (fixed) -->
   <nav>
-    <span>tweeter</span>
-    <span class="nav-new-tweet"><span><b>Write</b> a new tweet</span><span><i id="double-arrow-icon"
-          class="fas fa-angle-double-down"></i></span></span>
-  </nav>
-  <!-- Page-specific (main) content here -->
-  <header class="main-header">
-    <div class="profile-img">
-      <img src="/images/profile-hex.png">
-    </div>
-    <br>
-    <div class="profile-name">
-      <h2>Your Name</h2>
-    </div>
-  </header>
-  <main class="container">
-    <section class="new-tweet">
-      <h2>Compose Tweet</h2>
-      <form id="create-tweet-form" action="/tweets/" method="POST">
-        <label for="tweet-text">What are you humming about?</label>
-        <textarea class="tweet-textarea" name="text" id="tweet-textarea-counter"></textarea>
-        <span class="valid-error-message"></span>
-        <div class="btn-counter">
-          <button id="tweet-button" type="submit">Tweet</button>
-          <output id="text-count" name="counter" class="counter" for="tweet-text">
-            <span id="remaining-chars">140</span>
-          </output>
+    <h1>tweeter</h1>
+    <a href="#" id="nav-new-tweet" class="nav-new-tweet">
+      <strong>Write</strong> a new tweet
+      <i id="double-arrow-icon" class="fas fa-angle-double-down"></i>
+    </a>
+    </nav>
+    <!-- Page-specific (main) content here -->
+    <div class="header-main-wrapper">
+    <header class="main-header">
+      <div class="main-header-wrapper">
+        <div class="profile-img">
+          <img src="/images/profile-hex.png">
         </div>
-      </form>
-    </section>
-    <!-- tweet container -->
-    <section class="article-wrapper">
-          <!-- tweets go here -->
-    </section>
-    <!--  -->
-  </main>
+        <div class="profile-name">
+          <h2 class="profile-name"> Sura Jeon </h2>
+        </div>
+      </div>
+    </header>
+    <main class="tweet-main-container">
+      <section class="new-tweet">
+        <!-- <h2>Compose Tweet</h2> -->
+        <form id="create-tweet-form" action="/tweets/" method="POST">
+          <label for="tweet-text"><b>What are you humming about?</b></label>
+          <textarea class="tweet-textarea" name="text" id="tweet-textarea-counter"></textarea>
+          <span class="valid-error-message">error message</span>
+          <div class="btn-counter">
+            <button id="tweet-button" type="submit">Tweet</button>
+            <output id="text-count" name="counter" class="counter" for="tweet-text">
+              <span id="remaining-chars">140</span>
+            </output>
+          </div>
+        </form>
+      </section>
+      <!-- tweet container -->
+      <section class="article-wrapper">
+        <!-- tweets go here -->
+      </section>
+    </main>
+  </div>
 </body>
 
 </html>

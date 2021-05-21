@@ -4,12 +4,10 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// if ($input === "" || $input === null) {
-
-// }
 
 $(document).ready(function () {
 
+  // event handler for submitting new tweet
   $("#create-tweet-form").on("submit",((event) => {
     event.preventDefault();
     const $form = $(this);
@@ -38,6 +36,11 @@ $(document).ready(function () {
         });
     }
   }));
+
+  $("#nav-new-tweet").click(function() {
+    $(".new-tweet #create-tweet-form").toggleClass("active");
+  })     
+
 
   const loadTweets = () => {
     $.ajax({

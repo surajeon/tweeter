@@ -7,11 +7,19 @@
 
 /* NEW TWEET FORM */
 
-.new-tweet form{
+#create-tweet-form{
   position: relative;
   display: flex;
   flex-direction: column;  
-  padding: 36px 12px;
+  padding: 24px 12px 48px;
+  z-index: 1;
+  margin-top: -174px;
+  transition: 0.2s ease-in-out margin-top;
+}
+
+#create-tweet-form.active {
+  margin-top: 0;
+  transition: 0.2s ease-in-out margin-top;
 }
 
 #tweet-textarea-counter {
